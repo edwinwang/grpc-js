@@ -754,6 +754,7 @@ export class Http2SubchannelConnector implements SubchannelConnector {
         ...connectionOptions,
         ...address,
         enableTrace: options['grpc-node.tls_enable_trace'] === 1,
+        ...(options.localAddress ? { localAddress: options.localAddress } : {}),
       };
 
       /* http2.connect uses the options here:
